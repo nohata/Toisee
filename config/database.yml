@@ -56,5 +56,6 @@ production:
   encoding: unicode
   pool: 5
   database: toisee_production
-  username: toisee
-  password: <%= ENV['toisee_DATABASE_PASSWORD'] %>
+
+
+

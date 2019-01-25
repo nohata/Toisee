@@ -55,7 +55,10 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: 5
-  database: toisee_production
+  host: <%= ENV['HEROKU_DATABASE_HOST'] %>
+  database: <%= ENV['HEROKU_DATABASE'] %>
+  username: <%= ENV['RHEROKU_DATABASE_USERNAME'] %>
+  password: <%= ENV['HEROKU_DATABASE_PASSWORD'] %>
 
 
 

@@ -28,7 +28,7 @@
         <!-- Informations Entries Column -->
         <div class="col-md-12">
 
-          <h1 class="my-4">情報一覧
+          <h1 class="my-4">投稿一覧
             <small></small>
           </h1>
 
@@ -47,7 +47,7 @@
 
           <% @information.each do |information| %>
           <div class="card mb-4">
-            <h5 class="card-header"><%= information.general ? "一般公開" : "非公開" %></h5>
+            <h5 class="card-header"><%= information.general ? "公開" : "非公開" %></h5>
             <div class="card-body">
               <h2 class="card-title"><%= information.title %></h2>
               <p class="card-text"><%= information.comment %></p>

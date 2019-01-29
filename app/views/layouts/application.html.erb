@@ -31,7 +31,7 @@
           <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
               <li class="nav-item">
-                <%= link_to '情報', information_index_path, class: 'nav-link' %>
+                <%= link_to 'マイページ', information_index_path, class: 'nav-link' %>
               </li>
               <li class="nav-item">
                 <%= link_to 'プロフィール変更', edit_user_registration_path, class: 'nav-link' %>

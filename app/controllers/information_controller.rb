@@ -1,16 +1,22 @@
 class InformationController < ApplicationController
   before_action :authenticate_user!
   before_action :set_information, only: [:show, :edit, :update, :destroy]
+  before_action :myitem?, only: [:edit, :update, :destroy]
 
   # GET /information
   # GET /information.json
   def index
-    @information = Information.all
+    @information = Information.where(user_id: current_user.id)
   end
 
   # GET /information/1
   # GET /information/1.json
   def show
+    unless @information.user_id == current_user.id
+      unless @information.general
+        redirect_to top_show_path
+      end
+    end
   end
 
   # GET /information/new
@@ -71,6 +77,12 @@ class InformationController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def information_params
       params.require(:information).permit(:title, :comment, :general).merge(user_id: current_user.id)
+    end
+
+    def myitem?
+      unless @information.user_id == current_user.id
+        redirect_to top_show_path
+      end
     end
 
 

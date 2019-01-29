@@ -1,33 +1,86 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Information</h1>
+<section class="bg-dark minh">
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Comment</th>
-      <th>General</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <div class="container">
 
-  <tbody>
-    <% @information.each do |information| %>
-      <tr>
-        <td><%= information.title %></td>
-        <td><%= information.comment %></td>
-        <td><%= information.general %></td>
-        <td><%= information.user_id %></td>
-        <td><%= link_to 'Show', information %></td>
-        <td><%= link_to 'Edit', edit_information_path(information) %></td>
-        <td><%= link_to 'Destroy', information, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <div class="row">
 
-<br>
 
-<%= link_to 'New Information', new_information_path %>
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-12">
+<!--
+          <div class="card my-4">
+            <h5 class="card-header">Search</h5>
+            <div class="card-body">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                  <button class="btn btn-secondary" type="button">Go!</button>
+                </span>
+              </div>
+            </div>
+          </div>
+-->
+          <%= link_to '新規作成', new_information_path, class: "my-4 btn btn-success" %>
+        </div>
+
+
+        <!-- Informations Entries Column -->
+        <div class="col-md-12">
+
+          <h1 class="my-4">情報一覧
+            <small></small>
+          </h1>
+
+          <!-- Information Post -->
+          <% if @information.empty? %>
+          <div class="card mb-4">
+            <h5 class="card-header"></h5>
+            <div class="card-body">
+              <h2 class="card-title"></h2>
+              <p class="card-text">データがありません。</p>
+            </div>
+            <div class="card-footer text-muted">
+            </div>
+          </div>
+          <% end %>
+
+          <% @information.each do |information| %>
+          <div class="card mb-4">
+            <h5 class="card-header"><%= information.general ? "一般公開" : "非公開" %></h5>
+            <div class="card-body">
+              <h2 class="card-title"><%= information.title %></h2>
+              <p class="card-text"><%= information.comment %></p>
+              <%= link_to '詳細', information, class: "btn btn-primary" %>
+            </div>
+            <div class="card-footer text-muted">
+              <div class="row">
+                <div class="col-md-8">
+                  更新日 <%= information.updated_at.strftime('%Y年%m月%d日 %H:%M:%S') %> by <%= information.user.username %>
+                </div>
+                <div class="col-md-4 text-right">
+                  <%= link_to '削除', information, method: :delete, data: { confirm: '本当に削除しますか？' } %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% end %>
+
+
+          <!-- Pagination -->
+          <ul class="pagination justify-content-center mb-4">
+            <li class="page-item">
+              <a class="page-link" href="#">&larr; Older</a>
+            </li>
+            <li class="page-item disabled">
+              <a class="page-link" href="#">Newer &rarr;</a>
+            </li>
+          </ul>
+
+        </div>
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+</section>

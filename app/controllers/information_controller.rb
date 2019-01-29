@@ -1,4 +1,5 @@
 class InformationController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_information, only: [:show, :edit, :update, :destroy]
 
   # GET /information
@@ -69,6 +70,8 @@ class InformationController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def information_params
-      params.require(:information).permit(:title, :comment, :general, :user_id)
+      params.require(:information).permit(:title, :comment, :general).merge(user_id: current_user.id)
     end
+
+
 end

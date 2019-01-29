@@ -1,4 +1,4 @@
-<%= form_with(model: information, local: true) do |form| %>
+<%= form_with(model: information, local: true) do |f| %>
   <% if information.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(information.errors.count, "error") %> prohibited this information from being saved:</h2>
@@ -10,28 +10,21 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="form-group">
+    <div class="form-label-group">
+      <%= f.text_field :title, id: "inputTitle", class: "form-control", placeholder: "タイトル", required: true, autofocus: true %>
+      <%= f.label :title, "タイトル", for: "inputTitle" %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :comment %>
-    <%= form.text_area :comment %>
+  <div class="form-group">
+    <div class="form-label-group">
+      <%= f.text_area :comment, id: "inputComment", class: "form-control", placeholder: "", required: true, size: "60x10", placeholder: "コメント" %>
+      <%= f.label :comment, "コメント", for: "inputComment" %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :general %>
-    <%= form.check_box :general %>
+  <div class="form-group">
+    <%= f.check_box :general %>
+    <%= f.label :general, "一般公開" %>
   </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= f.submit "登録", class: "btn btn-primary btn-block" %>
 <% end %>

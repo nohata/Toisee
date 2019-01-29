@@ -292,7 +292,8 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
 }
 
 .form-label-group > input,
-.form-label-group > label {
+.form-label-group > label,
+.form-label-group > textarea {
   padding: var(--input-padding-y) var(--input-padding-x);
   height: auto;
 }
@@ -334,7 +335,8 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
   padding-bottom: calc(var(--input-padding-y) / 3);
 }
 
-.form-label-group input:not(:placeholder-shown) ~ label {
+.form-label-group input:not(:placeholder-shown) ~ label,
+.form-label-group textarea:not(:placeholder-shown) ~ label {
   padding-top: calc(var(--input-padding-y) / 3);
   padding-bottom: calc(var(--input-padding-y) / 3);
   font-size: 12px;

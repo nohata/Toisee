@@ -1,6 +1,15 @@
-<h1>Editing Information</h1>
+<section class="bg-dark minh">
+  <div class="container">
+    <div class="card card-register mx-auto mt-5">
+      <div class="card-header">編集</div>
+      <div class="card-body">
+        <%= render 'form', information: @information %>
+        <div class="text-left">
+          <%= link_to '表示', @information, class: 'd-block mt-3' %>
+          <%= link_to '一覧へ', information_index_path, class: 'd-block' %>
+        </div>
 
-<%= render 'form', information: @information %>
-
-<%= link_to 'Show', @information %> |
-<%= link_to 'Back', information_index_path %>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @information.title %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @information.comment %>
+</p>
+
+<p>
+  <strong>General:</strong>
+  <%= @information.general %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @information.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_information_path(@information) %> |
+<%= link_to 'Back', information_index_path %>

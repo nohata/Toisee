@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Users::ConfirmationsController < Devise::ConfirmationsController
+  before_action :production_not_send_mail, only: [:create]
+
   # GET /resource/confirmation/new
   # def new
   #   super

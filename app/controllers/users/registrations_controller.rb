@@ -16,7 +16,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to top_show_path, notice: 'user was successfully created.' }
+        format.html { redirect_to top_show_path, success: 'ユーザーを作りました' }
         #format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Users::UnlocksController < Devise::UnlocksController
+  before_action :production_not_send_mail, only: [:create]
+
   # GET /resource/unlock/new
   # def new
   #   super

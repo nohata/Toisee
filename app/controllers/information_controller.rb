@@ -6,7 +6,7 @@ class InformationController < ApplicationController
   # GET /information
   # GET /information.json
   def index
-    @information = Information.where(user_id: current_user.id)
+    @information = Information.where(user_id: current_user.id).page(params[:page]).per(10)
   end
 
   # GET /information/1
@@ -35,7 +35,7 @@ class InformationController < ApplicationController
 
     respond_to do |format|
       if @information.save
-        format.html { redirect_to @information, notice: 'Information was successfully created.' }
+        format.html { redirect_to @information, success: '投稿しました' }
         format.json { render :show, status: :created, location: @information }
       else
         format.html { render :new }
@@ -49,7 +49,7 @@ class InformationController < ApplicationController
   def update
     respond_to do |format|
       if @information.update(information_params)
-        format.html { redirect_to @information, notice: 'Information was successfully updated.' }
+        format.html { redirect_to @information, success: '編集しました' }
         format.json { render :show, status: :ok, location: @information }
       else
         format.html { render :edit }
@@ -63,7 +63,7 @@ class InformationController < ApplicationController
   def destroy
     @information.destroy
     respond_to do |format|
-      format.html { redirect_to information_index_url, notice: 'Information was successfully destroyed.' }
+      format.html { redirect_to information_index_url, success: '削除しました' }
       format.json { head :no_content }
     end
   end

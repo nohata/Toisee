@@ -24,7 +24,6 @@
 
 
         <!-- Sidebar Widgets Column -->
-        <div class="col-md-12">
 <!--
           <div class="card my-4">
             <h5 class="card-header">Search</h5>
@@ -38,15 +37,12 @@
             </div>
           </div>
 -->
-        </div>
 
 
         <!-- Informations Entries Column -->
         <div class="col-md-12">
 
-          <h1 class="my-4">投稿一覧
-            <small></small>
-          </h1>
+          <h1 class="my-4 text-white">情報一覧</h1>
 
           <!-- Information Post -->
           <% if @information.empty? %>
@@ -79,15 +75,7 @@
           <% end %>
 
 
-          <!-- Pagination -->
-          <ul class="pagination justify-content-center mb-4">
-            <li class="page-item">
-              <a class="page-link" href="#">&larr; Older</a>
-            </li>
-            <li class="page-item disabled">
-              <a class="page-link" href="#">Newer &rarr;</a>
-            </li>
-          </ul>
+          <%= paginate @information %>
 
         </div>
 

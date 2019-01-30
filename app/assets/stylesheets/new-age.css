@@ -77,6 +77,12 @@ section h2 {
   letter-spacing: 1px;
 }
 
+@media (max-width: 992px) {
+  #mainNav .navbar-brand {
+    color: #222222;
+  }
+}
+
 #mainNav .navbar-brand:hover, #mainNav .navbar-brand:focus {
   color: #fcbd20;
 }

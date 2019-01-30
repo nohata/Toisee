@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Users::PasswordsController < Devise::PasswordsController
+  before_action :production_not_send_mail, only: [:create]
+
   # GET /resource/password/new
   # def new
   #   super

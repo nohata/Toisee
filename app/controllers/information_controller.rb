@@ -6,7 +6,7 @@ class InformationController < ApplicationController
   # GET /information
   # GET /information.json
   def index
-    @information = Information.where(user_id: current_user.id).page(params[:page]).per(10)
+    @information = Information.where(user_id: current_user.id).order(created_at: :desc).page(params[:page]).per(10)
   end
 
   # GET /information/1

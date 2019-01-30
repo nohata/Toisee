@@ -10,7 +10,7 @@ class TopController < ApplicationController
   # GET /top/1
   # GET /top/1.json
   def show
-    @information = Information.where(general: true).page(params[:page]).per(10)
+    @information = Information.where(general: true).order(created_at: :desc).page(params[:page]).per(10)
   end
 
 end

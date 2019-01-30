@@ -60,8 +60,8 @@
           <% @information.each do |information| %>
           <div class="card mb-4">
             <div class="card-body">
-              <h2 class="card-title"><%= information.title %></h2>
-              <p class="card-text"><%= information.comment %></p>
+              <h2 class="card-title"><%= truncate(information.title, length: 10) %></h2>
+              <p class="card-text"><%= truncate(information.comment, length: 100) %></p>
               <%= link_to '詳細', information, class: "btn btn-primary" %>
             </div>
             <div class="card-footer text-muted">

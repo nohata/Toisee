@@ -47,8 +47,8 @@
           <div class="card mb-4">
             <h5 class="card-header"><%= information.general ? "公開" : "非公開" %></h5>
             <div class="card-body">
-              <h2 class="card-title"><%= information.title %></h2>
-              <p class="card-text"><%= information.comment %></p>
+              <h2 class="card-title"><%= truncate(information.title, length: 10) %></h2>
+              <p class="card-text"><%= truncate(information.comment, length: 100) %></p>
               <%= link_to '詳細', information, class: "btn btn-primary" %>
             </div>
             <div class="card-footer text-muted">

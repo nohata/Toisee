@@ -21,6 +21,17 @@
 
     <!-- p class="notice"><%= notice %></p -->
     <!-- p class="alert"><%= alert %></p -->
+    <% if @information_form.present? %>
+      <% if @information_form.errors.any? %>
+          <div class="alert alert-warning">
+            <a class="close" data-dismiss="alert">×</a>
+            <% @information_form.errors.full_messages.each do |message| %>
+              <%= message %><br>
+            <% end %>
+          </div>
+      <% end %>
+    <% end %>
+    <%= devise_error_messages! %>
     <% flash.each do |name, msg| %>
       <div class="alert alert-<%= flash_class(name) %>">
         <a class="close" data-dismiss="alert">×</a>
@@ -86,7 +97,7 @@
         $(".alert").animate({
           'top' : '70px'
         },1000).delay(3000).animate({
-          'top' : '-90px'
+          'top' : '-190px'
         },1000);
       });
     </script>

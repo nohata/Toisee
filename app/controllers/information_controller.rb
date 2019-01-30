@@ -33,6 +33,8 @@ class InformationController < ApplicationController
   def create
     @information = Information.new(information_params)
 
+    @information_form = @information
+
     respond_to do |format|
       if @information.save
         format.html { redirect_to @information, success: '投稿しました' }
@@ -47,6 +49,8 @@ class InformationController < ApplicationController
   # PATCH/PUT /information/1
   # PATCH/PUT /information/1.json
   def update
+    @information_form = @information
+
     respond_to do |format|
       if @information.update(information_params)
         format.html { redirect_to @information, success: '編集しました' }

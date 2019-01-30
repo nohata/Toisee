@@ -4,7 +4,6 @@
       <div class="card-header">パスワード再発行</div>
       <div class="card-body">
         <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-          <%= devise_error_messages! %>
           <div class="form-group">
             <div class="form-label-group">
               <%= f.email_field :email, id: "inputEmail", class: "form-control", autocomplete: "emai", placeholder: "メールアドレス", required: true, autofocus: true %>

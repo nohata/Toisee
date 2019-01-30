@@ -1,0 +1,45 @@
+<section class="bg-dark minh">
+
+    <div class="container">
+
+      <div class="row">
+
+
+
+
+        <!-- Informations Entries Column -->
+        <div class="col-md-12">
+
+          <h1 class="my-4 text-white">詳細</h1>
+
+          <div class="card mb-4">
+            <h5 class="card-header"><%= @information.general ? "公開" : "非公開" %></h5>
+            <div class="card-body">
+              <h2 class="card-title"><%= @information.title %></h2>
+              <p class="card-text"><%= @information.comment %></p>
+              <% if @information.user_id == current_user.id %>
+                <%= link_to '編集', edit_information_path(@information), class: "btn btn-primary" %>
+              <% end %>
+            </div>
+            <div class="card-footer text-muted">
+              <div class="row">
+                <div class="col-md-8">
+                  更新日 <%= @information.updated_at.strftime('%Y年%m月%d日 %H:%M:%S') %> by <%= @information.user.username %>
+                </div>
+                <% if @information.user_id == current_user.id %>
+                <div class="col-md-4 text-right">
+                  <%= link_to '削除', @information, method: :delete, data: { confirm: '本当に削除しますか？' } %>
+                </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+</section>

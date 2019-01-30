@@ -1,22 +1,5 @@
-    <header class="masthead">
-      <div class="container h-100">
-        <div class="row h-100">
-          <div class="col-lg-12 my-auto">
-            <div class="header-content mx-auto">
-              <h1 class="mb-5">
-                こんにちは、<br>
-                <%= current_user.username %>さん
-              </h1>
-              <a href="#informations" class="btn btn-outline btn-xl js-scroll-trigger">情報を見る</a>
-            </div>
-          </div>
 
-        </div>
-      </div>
-    </header>
-
-
-<section class="bg-dark minh" id="informations">
+<section class="bg-dark minh">
 
     <div class="container">
 
@@ -24,6 +7,7 @@
 
 
         <!-- Sidebar Widgets Column -->
+        <div class="col-md-12">
 <!--
           <div class="card my-4">
             <h5 class="card-header">Search</h5>
@@ -37,12 +21,14 @@
             </div>
           </div>
 -->
+          <%= link_to '新規作成', new_information_path, class: "my-4 btn btn-success" %>
+        </div>
 
 
         <!-- Informations Entries Column -->
         <div class="col-md-12">
 
-          <h1 class="my-4 text-white">情報一覧</h1>
+          <h1 class="my-4 text-white">投稿一覧</h1>
 
           <!-- Information Post -->
           <% if @information.empty? %>
@@ -59,6 +45,7 @@
 
           <% @information.each do |information| %>
           <div class="card mb-4">
+            <h5 class="card-header"><%= information.general ? "公開" : "非公開" %></h5>
             <div class="card-body">
               <h2 class="card-title"><%= information.title %></h2>
               <p class="card-text"><%= information.comment %></p>
@@ -69,11 +56,13 @@
                 <div class="col-md-8">
                   更新日 <%= information.updated_at.strftime('%Y年%m月%d日 %H:%M:%S') %> by <%= information.user.username %>
                 </div>
+                <div class="col-md-4 text-right">
+                  <%= link_to '削除', information, method: :delete, data: { confirm: '本当に削除しますか？' } %>
+                </div>
               </div>
             </div>
           </div>
           <% end %>
-
 
           <%= paginate @information %>
 
@@ -84,5 +73,3 @@
 
     </div>
 </section>
-    <%= javascript_include_tag "new-age.min.js" %>
-    <%= javascript_include_tag "jquery.easing.js" %>

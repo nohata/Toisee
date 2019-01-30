@@ -1,54 +1,61 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>予約サイト</title>
+    <title>Toisee</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <style type="text/css" media="screen">
+      .alert {
+        display: block;
+        position: fixed;
+        right: 2%;
+        z-index: 100;
+      }
+    </style>
   </head>
+  <body>
 
-  <body id="page-top">
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
+    <!-- p class="notice"><%= notice %></p -->
+    <!-- p class="alert"><%= alert %></p -->
+    <% flash.each do |name, msg| %>
+      <div class="alert alert-<%= flash_class(name) %>">
+        <a class="close" data-dismiss="alert">×</a>
+        <%= msg %>
+      </div>
+    <% end %>
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a>
+        <%= link_to 'Toisee', root_path, class: 'navbar-brand' %>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fas fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#download">Download</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#features">Features</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-            </li>
-        <% if user_signed_in? %>
-            <li class="nav-item">
-              <%= link_to 'プロフィール変更', edit_user_registration_path, class: 'nav-link js-scroll-trigger' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link js-scroll-trigger' %>
-            </li>
-        <% else %>
-            <li class="nav-item">
-              <%= link_to 'サインアップ', new_user_registration_path, class: 'nav-link js-scroll-trigger' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'ログイン', new_user_session_path, class: 'nav-link js-scroll-trigger' %>
-            </li>
-        <% end %>
+            <% if user_signed_in? %>
+              <li class="nav-item">
+                <%= link_to 'マイページ', information_index_path, class: 'nav-link' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'プロフィール変更', edit_user_registration_path, class: 'nav-link' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to '新規登録', new_user_registration_path, class: 'nav-link' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'ログイン', new_user_session_path, class: 'nav-link' %>
+              </li>
+            <% end %>
           </ul>
         </div>
       </div>
@@ -58,20 +65,30 @@
 
     <footer>
       <div class="container">
-        <p>&copy; Your Website 2018. All Rights Reserved.</p>
+        <p>&copy; Toisee 2019. All Rights Reserved.</p>
         <ul class="list-inline">
           <li class="list-inline-item">
-            <a href="#">Privacy</a>
+            <a href="#" style="pointer-events: none">Privacy</a>
           </li>
           <li class="list-inline-item">
-            <a href="#">Terms</a>
+            <a href="#" style="pointer-events: none">Terms</a>
           </li>
           <li class="list-inline-item">
-            <a href="#">FAQ</a>
+            <a href="#" style="pointer-events: none">FAQ</a>
           </li>
         </ul>
       </div>
     </footer>
 
+
+    <script type="text/javascript">
+      $(function(){
+        $(".alert").animate({
+          'top' : '70px'
+        },1000).delay(3000).animate({
+          'top' : '-90px'
+        },1000);
+      });
+    </script>
   </body>
 </html>

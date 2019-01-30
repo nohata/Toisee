@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+    attributes:
+    errors:
+      models:
+        user:
+          attributes:
+            password_confirmation:
+              confirmation: "パスワードが一致しません。"

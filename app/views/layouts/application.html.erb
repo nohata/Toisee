@@ -31,12 +31,16 @@
           </div>
       <% end %>
     <% end %>
+
     <%= devise_error_messages! %>
+
     <% flash.each do |name, msg| %>
+      <% unless name == "timedout" %>
       <div class="alert alert-<%= flash_class(name) %>">
         <a class="close" data-dismiss="alert">×</a>
         <%= msg %>
       </div>
+      <% end %>
     <% end %>
 
     <!-- Navigation -->

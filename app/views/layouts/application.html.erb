@@ -53,7 +53,17 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <% if user_signed_in? %>
+            <% if admin_signed_in? %>
+              <li class="nav-item">
+                <%= link_to 'ユーザー管理', admins_users_path, class: 'nav-link' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'プロフィール変更', edit_admin_registration_path, class: 'nav-link' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link' %>
+              </li>
+            <% elsif user_signed_in? %>
               <li class="nav-item">
                 <%= link_to 'マイページ', information_index_path, class: 'nav-link' %>
               </li>
@@ -62,7 +72,6 @@
               </li>
               <li class="nav-item">
                 <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link' %>
-                <%= link_to '管理者ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link' %>
               </li>
             <% else %>
               <li class="nav-item">

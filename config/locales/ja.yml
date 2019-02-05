@@ -1,0 +1,10 @@
+ja:
+  admins:
+    users:
+      index:
+        id: id
+        username: ユーザー名
+        email: メールアドレス
+        number_of_posts: 投稿数
+        number_of_general: 公開数
+        delete: 削除

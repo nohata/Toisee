@@ -22,12 +22,21 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
+    case resource
+    when User
       top_show_path
+    when Admin
+      admins_root_path
+    end
   end
 
   private
       def sign_in_required
           redirect_to new_user_session_url unless user_signed_in?
+      end
+
+      def admin_sign_in_required?
+          redirect_to root_path unless admin_signed_in?
       end
 
 

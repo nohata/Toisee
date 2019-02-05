@@ -1,0 +1,49 @@
+
+<section class="bg-dark minh">
+
+    <div class="container">
+
+      <div class="row">
+
+
+        <div class="col-md-12">
+          <!-- %= link_to '新規作成', new_information_path, class: "my-4 btn btn-success" % -->
+        </div>
+
+
+        <div class="col-md-12">
+
+          <h1 class="my-4 text-white">ユーザー　一覧</h1>
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover bg-white">
+              <thead>
+                <tr>
+                  <th><%= t '.id' %></th>
+                  <th><%= t '.username' %></th>
+                  <th><%= t '.email' %></th>
+                  <th><%= t '.number_of_posts' %> / <%= t '.number_of_general' %></th>
+                  <th><%= t '.delete' %></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @users.each do |user| %>
+                <tr>
+                  <td><%= user.id %></td>
+                  <td><%= user.username %></td>
+                  <td><%= user.email %></td>
+                  <td><%= user.information.count %> / <%= user.information.where(general: true).count %></td>
+                  <td><%= link_to '削除', admins_user_path(user), method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+
+          <%= paginate @users %>
+
+        </div>
+
+      </div>
+
+    </div>
+</section>

@@ -1,6 +1,19 @@
 Rails.application.routes.draw do
   resources :information
 
+  devise_for :admins, controllers: {
+    sessions:      'admins/sessions',
+    passwords:     'admins/passwords',
+    registrations: 'admins/registrations'
+  }
+
+  namespace :admins do
+    resources :top
+    resources :users
+
+    root to: 'top#index'
+  end
+
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
     :passwords => 'users/passwords',

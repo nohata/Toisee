@@ -7,9 +7,9 @@ class ApplicationController < ActionController::Base
 
 
   def production_not_send_mail
-    if Rails.env.production?
-      redirect_to top_show_path, warning: '本番環境ではメール送信しません'
-    end
+    # if Rails.env.production?
+    #   redirect_to top_show_path, warning: '本番環境ではメール送信しません'
+    # end
   end
 
   protected
